@@ -5,10 +5,12 @@ import com.example.composenavigationapp.ui.screens.DetailScreen
 import com.example.composenavigationapp.ui.screens.ProfileScreen
 import com.example.composenavigationapp.ui.screens.SettingsScreen
 import com.example.composenavigationapp.ui.screens.AddScreen
+import com.example.composenavigationapp.ui.screens.NegroScreen
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Groups
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Settings
@@ -33,9 +35,10 @@ sealed class BottomItem(
     data object Home : BottomItem(Routes.HOME, "Home", Icons.Filled.Home)
     data object Profile : BottomItem(Routes.PROFILE, "Profile", Icons.Filled.Person)
     data object Settings : BottomItem(Routes.SETTINGS, "Settings", Icons.Filled.Settings)
+    data object Contributors : BottomItem(Routes.CONTRIBUTORS, "Contributors", Icons.Filled.Groups)
 }
 
-private val bottomItems = listOf(BottomItem.Home, BottomItem.Profile, BottomItem.Settings)
+private val bottomItems = listOf(BottomItem.Home, BottomItem.Profile, BottomItem.Settings, BottomItem.Contributors)
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -157,6 +160,7 @@ private fun MainNavHost(navController: NavHostController) {
         }
         composable(Routes.PROFILE) { ProfileScreen() }
         composable(Routes.SETTINGS) { SettingsScreen() }
+        composable(Routes.CONTRIBUTORS) { NegroScreen() }
         composable(Routes.ADD) { AddScreen(navController) }
     }
 }
